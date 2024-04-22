@@ -1,0 +1,32 @@
+&NEWRUN
+  Distribution = 'laser_I=8192_Q=0.0001_sc=0.005.in'
+  Zoff = 0.307
+  Z_min = 0.307
+  Z_Cathode = 0.307
+  H_max = 6.10352e-05
+  H_min = 6.10352e-05
+/
+
+&OUTPUT
+  ZSTART = 0.307
+  ZSTOP = 0.596
+  Zemit = 300
+  EmitS = True
+  TrackS = False
+  RefS = False
+/
+
+&CHARGE
+  LSPCH = True
+  Nrad = 256
+  Cell_var = 2
+  Nlong_in = 256
+/
+
+&CAVITY
+  LEField = True
+  File_Efield(1) = 'DC-3D-p=3_nsub=16_nx=ny=64_nz=1024'
+  C_noscale(1) = True
+  Com_grid(1) = 'E'
+  Nue(1) = 0
+/
