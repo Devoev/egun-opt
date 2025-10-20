@@ -5,7 +5,7 @@
 %       - geometry: nurbs geometry
 
 function [] = write_iges (filename, geometry)
-    display = false;
+    display = true;
 
     % anode ring
     % iptc = [5 13 10 9 8 7 4 3];
@@ -39,9 +39,8 @@ function [] = write_iges (filename, geometry)
         nurbs = geometry(iptc(ii)).nurbs;
         if (display)
             hold on;
-            nrbkntplot(nurbs(ibnd(ii)));
+            nrbkntplot(nurbs);
             hold off;
-            view(3);
             colormap('viridis');
         end
         nrb2iges(nurbs, [filename '_' num2str(iptc(ii)) num2str(ii) '.igs']);
