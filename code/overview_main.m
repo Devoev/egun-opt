@@ -1,4 +1,7 @@
-% Plots the geometry and computes the field solution.
+%% Plots the geometry and computes the field solution.
+addpath(genpath('.'))
+pkg load nurbs
+pkg load geopdes
 
 % geometry_file = 'geometry_v6_orig';
 % geometry_file = 'nlopt_fit';
