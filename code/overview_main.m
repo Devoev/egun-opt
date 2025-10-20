@@ -20,7 +20,7 @@ write_iges_2d("out/geometry_v6_orig", geometry);
 % write_boundary (geometry);
 % write_geometry (geometry);
 
-plot_geometry (geometry, boundaries);
+%plot_geometry (geometry, boundaries);
 return
 % solve electrostatic problem
 [problem_data, method_data] = setup_problem (geometry_file);

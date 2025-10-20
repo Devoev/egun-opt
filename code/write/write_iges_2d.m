@@ -37,10 +37,6 @@ function [] = write_iges (filename, geometry)
 
     for ii=1:length(iptc)
         nurbs = geometry(iptc(ii)).nurbs;
-        pnt   = [0 0 0];
-        ext   = [1 0 0];
-        nurbs = nrbrevolve(nurbs, pnt, ext, 2*pi);
-        nurbs = nrbextract(nurbs);
         if (display)
             hold on;
             nrbkntplot(nurbs(ibnd(ii)));
@@ -48,7 +44,7 @@ function [] = write_iges (filename, geometry)
             view(3);
             colormap('viridis');
         end
-        nrb2iges(nurbs(ibnd(ii)), [filename '_' num2str(iptc(ii)) num2str(ibnd(ii)) '.igs']);
+        nrb2iges(nurbs, [filename '_' num2str(iptc(ii)) num2str(ii) '.igs']);
     end
 
     % additional vacuum chamber piece
