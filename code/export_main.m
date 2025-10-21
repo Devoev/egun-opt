@@ -1,4 +1,5 @@
-%% Plots the geometry and computes the field solution.
+%% Exports the geometry and boundary representation to an IGES file.
+
 clear all
 addpath(genpath('.'))
 pkg load nurbs
