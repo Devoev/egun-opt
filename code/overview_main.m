@@ -13,7 +13,8 @@ geometry_file = 'geometry_v6_orig';
 [geometry, boundaries] = mp_geo_load ([geometry_file '.txt']);
 
 %% Write to IGES
-write_iges_2d("out/geometry_v6_orig", geometry);
+idx = 1:length(geometry);
+write_iges_2d("out/geometry_v6_orig", geometry, idx);
 %write_iges (['v6_opt'], geometry);
 
 % write .dat files
