@@ -6,7 +6,7 @@ pkg load geopdes
 
 % Define geometry (x = z, y = rho)
 R0 = 0.3;  % inner radius
-u = @(x,y) log(y/R0) / log(1.0/R0);
+u = @(z,r) log(r/R0) / log(1.0/R0);
 
 nurbs = nrbsquare([0, R0], 1.0, 1.0 - R0, 1);
 geo = geo_load (nurbs);
@@ -53,14 +53,16 @@ for n=1:num_refine
 
     % Plot
     % sp_plot_solution(uh, space, geo, [20 20]);
-    zs = linspace(0, 1, 100);
-    rs = linspace(R0, 1, 100);
-    eval_pts = { zs, rs };
+    num_eval = 100;
+    eval_pts = { linspace(0, 1, num_eval), linspace(0, 1, num_eval) };
     [uh_eval, p] = sp_eval(uh, sp_scalar, geo, eval_pts);
-    z = p(1,:,:);
-    r = p(2,:,:);
+    z = squeeze(p(1,:,:));
+    r = squeeze(p(2,:,:));
     u_eval = squeeze(u(z,r));
-    surf(zs, rs, abs(u_eval - uh_eval))
+
+    z = z(:,1);
+    r = r(1,:);
+    surf(r, z, abs(u_eval - uh_eval))
 
     % Compute L2 error
     err_l2 = sp_l2_error(space, msh, uh, u); % todo: rho factor is probably missing
